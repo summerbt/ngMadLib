@@ -1,0 +1,83 @@
+    .banner,
+    .word-collection,
+    .madlib-text {
+        text-align: center;
+        width: 95%;
+        margin: auto;
+    }
+
+    table {
+        margin: auto;
+    }
+
+    p {
+        text-align: left;
+    }
+
+    .image {
+        text-align: center;
+        display: inline;
+        margin: 0px;
+    }
+
+    img {
+        align-content: center;
+    }
+
+    .image-smile {
+        max-width: 100%;
+    }
+
+    .image-logo {
+        max-width: 100%;
+    }
+
+    .poiret-one {
+        font-family: 'Poiret One', cursive;
+    }
+
+    .user-entry {
+        font-family: 'Annie Use Your Telescope', cursive;
+        text-decoration: underline;
+        background-color: none;
+    }
+
+    @media only screen and (min-width: 480px) {
+        body {
+            background-color: lightgreen;
+        }
+        .banner,
+        .word-collection,
+        .madlib-text {
+            width: 90%;
+        }
+        .image-smile,
+        .image-logo {
+            height: 5em;
+        }
+        .image-smile {
+            width: 5em;
+        }
+    }
+
+    @media only screen and (min-width: 667px) {
+        body {
+            background-color: lightblue;
+        }
+        .banner,
+        .word-collection,
+        .madlib-text {
+            width: 80%;
+        }
+    }
+
+    @media only screen and (min-width: 768px) {
+        body {
+            background-color: lightcoral;
+        }
+        .banner,
+        .word-collection,
+        .madlib-text {
+            width: 70%;
+        }
+    }
