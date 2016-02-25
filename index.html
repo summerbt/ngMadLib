@@ -6,6 +6,7 @@
     <title>ngMadLib</title>
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Annie+Use+Your+Telescope' rel='stylesheet' type='text/css'>
 </head>
@@ -18,42 +19,63 @@
         </div>
 
     </header>
-    <section class="word-collection">
-        <table>
-            <tr>
-                <td>
-                    <input class="poiret-one" type="text" ng-model="flag" placeholder="noun" />
-                </td>
-                <td>
-                    <input class="poiret-one" type="text" ng-model="usa" placeholder="place" />
-                </td>
-                <td>
-                    <input class="poiret-one" type="text" ng-model="republic" placeholder="ideology (noun)" />
-                </td>
+    <!--
+<section class="word-collection" ng-controller="">
+    <table>
+        <tr>
+            <td>
+                <input class="poiret-one" type="text" ng-model="flag" placeholder="noun" />
+            </td>
+            <td>
+                <input class="poiret-one" type="text" ng-model="usa" placeholder="place" />
+            </td>
+            <td>
+                <input class="poiret-one" type="text" ng-model="republic" placeholder="ideology (noun)" />
+            </td>
 
-            </tr>
-            <tr>
-                <td>
-                    <input class="poiret-one" type="text" ng-model="nation" placeholder="type of place" />
-                </td>
-                <td>
-                    <input class="poiret-one" type="text" ng-model="god" placeholder="mythical/religious character" />
-                </td>
-                <td>
-                    <input class="poiret-one" type="text" ng-model="all" placeholder="plural noun" />
-                </td>
+        </tr>
+        <tr>
+            <td>
+                <input class="poiret-one" type="text" ng-model="nation" placeholder="type of place" />
+            </td>
+            <td>
+                <input class="poiret-one" type="text" ng-model="god" placeholder="mythical/religious character" />
+            </td>
+            <td>
+                <input class="poiret-one" type="text" ng-model="all" placeholder="plural noun" />
+            </td>
 
-            </tr>
-        </table>
+        </tr>
+    </table>
+</section>
+-->
+    <section class="nav-bar">
+        <ul class="nav nav-pills" ng-init="tab='howTo'">
+            <li ng-class="{active:tab === 'howTo'}"><a href ng-click="tab='howTo'">How To MadLib</a></li>
+            <li ng-class="{active:tab === 'politics'}"><a href ng-click="tab='politics'">Politics</a></li>
+            <li ng-class="{active:tab === 'lyrics'}"><a href ng-click="tab='lyrics'">Lyrics</a></li>
+            <li ng-class="{active:tab === 'nursery-rhymes'}"><a href ng-click="tab='nursery-rhymes'">Nursery Rhymes</a></li>
+        </ul>
     </section>
-    <section class="madlib-text">
-        <p class="poiret-one">I pledge allegiance to the
-            <span class="user-entry">{{ flag }}</span> of
-            <span class="user-entry">{{ usa }}</span>, and to the
-            <span class="user-entry">{{ republic }}</span> for which it stands, one
-            <span class="user-entry">{{ nation }}</span> under
-            <span class="user-entry">{{ god }}</span>, indivisible, with liberty and justice for
-            <span class="user-entry">{{ all }}</span>.</p>
+    <section class="madlib-text" ng-controller="wordCollection as collector">
+        <div ng-if="tab =='howTo'">
+            <p class="poiret-one">
+                Mad Libs consist of a short story on each page with many key words replaced with blanks. Each blank is specified with a lexical or other category, such as "noun", "verb", "place", or "part of the body". You will contribute some word for the specified type for each blank. Finally, you will click
+                <span><button class="btn-primary">Build MadLib</button></span> to reveal the completed story. The result is usually comic, surreal and somewhat nonsensical.
+            </p>
+        </div>
+
+        <div ng-if="tab =='politics'">
+            <p ng-if="collector.words.create" class="poiret-one">I pledge allegiance to the
+                <span class="user-entry">{{ collector.words.flag }}</span> of
+                <span class="user-entry">{{ collector.words.usa }}</span>, and to the
+                <span class="user-entry">{{ collector.words.republic }}</span> for which it stands, one
+                <span class="user-entry">{{ collector.words.nation }}</span> under
+                <span class="user-entry">{{ collector.words.god }}</span>, indivisible, with liberty and justice for
+                <span class="user-entry">{{ collector.words.all }}</span>.</p>
+        </div>
+        <button class='btn-primary' ng-click="collector.words.create=true">Build MadLib</button>
+
     </section>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js" type="text/javascript"></script>
