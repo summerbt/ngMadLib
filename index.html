@@ -20,7 +20,7 @@
 
     </header>
     <!--
-<section class="word-collection" ng-controller="">
+<div class="word-collection" ng-controller="">
     <table>
         <tr>
             <td>
@@ -47,7 +47,7 @@
 
         </tr>
     </table>
-</section>
+</div>
 -->
     <section class="nav-bar">
         <ul class="nav nav-pills" ng-init="tab='howTo'">
@@ -57,7 +57,7 @@
             <li ng-class="{active:tab === 'nursery-rhymes'}"><a href ng-click="tab='nursery-rhymes'">Nursery Rhymes</a></li>
         </ul>
     </section>
-    <section class="madlib-text" ng-controller="wordCollection as collector">
+    <section class="madlib-text">
         <div ng-if="tab =='howTo'">
             <p class="poiret-one">
                 Mad Libs consist of a short story on each page with many key words replaced with blanks. Each blank is specified with a lexical or other category, such as "noun", "verb", "place", or "part of the body". You will contribute some word for the specified type for each blank. Finally, you will click
@@ -65,16 +65,105 @@
             </p>
         </div>
 
-        <div ng-if="tab =='politics'">
-            <p ng-if="collector.words.create" class="poiret-one">I pledge allegiance to the
+        <div ng-if="tab =='politics'" ng-controller="politicsWordCollection as collector">
+            <div class="word-collection">
+                <table>
+                    <tr>
+                        <td>
+                            <input class="poiret-one" ng-model=collector.words.flag type="text" placeholder="noun" />
+                        </td>
+                        <td>
+                            <input class="poiret-one" ng-model=collector.words.usa type="text" placeholder="place" />
+                        </td>
+                        <td>
+                            <input class="poiret-one" ng-model=collector.words.republic type="text" placeholder="ideology (noun)" />
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <input class="poiret-one" ng-model=collector.words.nation type="text" placeholder="type of place" />
+                        </td>
+                        <td>
+                            <input class="poiret-one" ng-model=collector.words.god type="text" placeholder="mythical/religious character" />
+                        </td>
+                        <td>
+                            <input class="poiret-one" ng-model=collector.words.all type="text" placeholder="plural noun" />
+                        </td>
+
+                    </tr>
+                </table>
+            </div>
+            <p ng-if="collector.words.create==true" class="poiret-one">I pledge allegiance to the
                 <span class="user-entry">{{ collector.words.flag }}</span> of
                 <span class="user-entry">{{ collector.words.usa }}</span>, and to the
                 <span class="user-entry">{{ collector.words.republic }}</span> for which it stands, one
                 <span class="user-entry">{{ collector.words.nation }}</span> under
                 <span class="user-entry">{{ collector.words.god }}</span>, indivisible, with liberty and justice for
                 <span class="user-entry">{{ collector.words.all }}</span>.</p>
+            <button class='btn-primary' ng-click="collector.words.create=true">Build MadLib</button>
         </div>
-        <button class='btn-primary' ng-click="collector.words.create=true">Build MadLib</button>
+        <div ng-if="tab =='lyrics'" ng-controller="lyricsWordCollection as collector">
+            <div class="word-collection">
+                <table>
+                    <tr>
+                        <td>
+                            <input class="poiret-one" ng-model=collector.words.big type="text" placeholder="adjective" />
+                        </td>
+                        <td>
+                            <input class="poiret-one" ng-model=collector.words.butts type="text" placeholder="part of body (plural)" />
+                        </td>
+                        <td>
+                            <input class="poiret-one" ng-model=collector.words.mix type="text" placeholder="verb (present tense)" />
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <input class="poiret-one" ng-model=collector.words.alot type="text" placeholder="adjective" />
+                        </td>
+                        <td>
+                            <input class="poiret-one" ng-model=collector.words.brothers type="text" placeholder="type of family member (plural)" />
+                        </td>
+                        <td>
+                            <input class="poiret-one" ng-model=collector.words.girl type="text" placeholder="noun" />
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <input class="poiret-one" ng-model=collector.words.waist type="text" placeholder="noun (rhymes with face)" />
+                        </td>
+                        <td>
+                            <input class="poiret-one" ng-model=collector.words.round type="text" placeholder="shape" />
+                        </td>
+                        <td>
+                            <input class="poiret-one" ng-model=collector.words.face type="text" placeholder="noun (rhymes with face)" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div ng-if="collector.words.create==true">
+                <h3 class="poiret-one">I Like
+                <span class="user-entry">{{collector.words.big}}</span>
+                    <span class="user-entry">{{collector.words.butts}}</span>
+                </h3>
+                <h4 class="poiret-one">By Sir
+                    <span class="user-entry">{{collector.words.mix}}</span>-<span class="user-entry">{{collector.words.alot}}</span>
+                </h4>
+                <p class="poiret-one">I like
+                    <span class="user-entry">{{collector.words.big}}</span>
+                    <span class="user-entry">{{collector.words.butts}}</span> and I can not lie. You other
+                    <span class="user-entry">{{collector.words.brothers}}</span> can't deny. That when a
+                    <span class="user-entry">{{collector.words.girl}}</span> walks in with an itty bitty
+                    <span class="user-entry">{{collector.words.waist}}</span>. And a
+                    <span class="user-entry">{{collector.words.round}}</span> thing in your
+                    <span class="user-entry">{{collector.words.face}}</span>. You get sprung!
+                </p>
+            </div>
+            <button class='btn-primary' ng-click="collector.words.create=true">Build MadLib</button>
+        </div>
+
 
     </section>
 </body>

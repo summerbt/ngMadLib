@@ -1,15 +1,30 @@
 (function () {
     var app = angular.module('myApp', [])
-    app.controller('wordCollection', function () {
-        this.words = madLib;
-    });
-    var madLib = {
-        flag: 'FLAG',
-        usa: 'USA',
-        republic: 'REPUBLIC',
-        nation: 'NATION',
-        god: 'GOD',
-        all: 'ALL',
+    app.controller('politicsWordCollection', function () {
+            this.words = politicsMadLib;
+        })
+        .controller('lyricsWordCollection', function () {
+            this.words = lyricsMadLib;
+        });
+    var politicsMadLib = {
+        flag: '',
+        usa: '',
+        republic: '',
+        nation: '',
+        god: '',
+        all: '',
+        create: false
+    }
+    var lyricsMadLib = {
+        big: '',
+        butts: '',
+        mix: '',
+        alot: '',
+        brothers: '',
+        girl: '',
+        waist: '',
+        round: '',
+        face: '',
         create: false
     }
 })();
